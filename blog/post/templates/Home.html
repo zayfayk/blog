@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ideas Stream - Creative Thinking Platform{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="top-header">
+        <h1 class="title"><i class="fas fa-lightbulb pulse"></i> Idea Stream</h1>
+        <p class="subtitle">Fikirlerinizi paylaşın, geliştirin ve ilham alın</p>
+        <a href="{% url 'add_post' %}" class="add-btn">
+            <i class="fas fa-plus"></i> Yeni Fikir Ekle
+        </a>
+        <a href="{% url 'add_category' %}" class="add-btn">
+            <i class="fas fa-plus"></i> Yeni Kategori Ekle
+        </a>
+    </div>
+    
+
+    <!-- Main Content Section -->
+    <div class="wrapper">
+        <div class="card-container">
+            
+            {% for post in object_list %}
+            <div class="idea-card">
+                <div class="card-content">
+                    <h2 class="idea-title">{{ post.title }}</h2>
+                    <p class="idea-body">{{ post.Body|truncatewords:20}}</p>
+                </div>
+           
+                <div class="idea-footer">
+                    <span class="idea-meta">
+                        <i class="far fa-calendar-alt">  </i>  {{ post.date|date:"d M Y" }} 
+                        &nbsp; • &nbsp; 
+                        <i class="far fa-user">  </i> {{ post.author }}
+                        &nbsp; • &nbsp; 
+                        {% if post.category %}
+                        <a href="{% url 'category' post.category|slugify %} " style="text-decoration: none;">
+                            <i class="far fa-list-alt"></i> {{ post.category }}
+                        </a>
+                        {% else %}
+                        <span><i class="far fa-list-alt"></i> Kategori Yok</span>
+                        {% endif %}
+                    </span>
+                    <div class="actions"> 
+                        <a href="{% url 'post_detail' post.pk %}" class="btn detail"><i class="fas fa-eye"></i> Detaylar</a>
+                        <a href="{% url 'post_update' post.pk %}" class="btn edit"><i class="fas fa-edit"></i> Düzenle</a>
+                        <a href="{% url 'post_delete' post.pk %}" class="btn delete"><i class="fas fa-trash"></i> Sil</a>
+                    </div>
+               
+                </div>
+            </div>
+          
+            {% empty %}
+            <div class="empty-message">
+                <i class="fas fa-inbox"></i>
+                <p>Henüz fikir eklenmemiş. İlk fikri siz ekleyin!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+    <h1>Welcome to the Blog</h1>
+    <p>Sign up to see the latest posts</p>
+    <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a> <br><br>
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a> <br><br>
+    <a href="{% url 'contant' %}" class="btn btn-primary">Contact Us</a>
+{% endif %}
+{% endblock %}

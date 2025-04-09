@@ -1,0 +1,125 @@
+body{
+    margin: 0%;
+    padding: 0%;
+}
+.container{
+    align-items: start;
+}
+form{
+    width: 45%;
+    margin: auto;
+    padding: 5px;
+    
+}
+h1{
+    margin: 0;
+    padding: 0;
+    font-weight: bold; /* Başlıkları kalın yapma */
+    font-size: 2.2em; /* Başlık boyutunu büyütme */
+}
+.submit-button {
+    background: linear-gradient(90deg, #000000, #090909);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+    background: linear-gradient(90deg, #020202, #000000);
+    transform: scale(1.05);
+}
+/* ... your existing CSS ... */
+
+/* Top Menu Styles */
+.top-menu {
+    background-color: #343a40; /* Dark background color, adjust as needed */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center; /* Vertically align items in the center */
+}
+
+.top-menu .logo {
+    font-size: 1.5em; /* Adjust logo size */
+    color: white; /* Logo color */
+}
+
+.top-menu .menu-items, .top-menu .account-actions {
+    display: flex; /* Arrange menu items horizontally */
+    gap: 20px; /* Spacing between menu items */
+}
+
+.top-menu .menu-items a, .top-menu .account-actions a {
+    color: white;
+    text-decoration: none; /* Remove underlines from links */
+    padding: 8px 12px; /* Add padding to links for better click area */
+    border-radius: 5px; /* Optional: Rounded corners for links */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.top-menu .menu-items a:hover, .top-menu .account-actions a:hover {
+    background-color: #555; /* Darker background on hover */
+}
+
+
+/* Existing styles - keep these */
+/* Link Stili */
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: color 0.4s ease-in-out;
+}
+
+a:hover {
+    color: rgb(75, 75, 243);
+    transition-delay: 0.3s;
+}
+
+/* Liste stilini düzenle */
+ul {
+    display: block;
+    text-align: center;
+    color: white;
+    list-style-type: none;
+    padding: 10px;
+    margin: auto;
+}
+
+/* Blog içeriği düzeni */
+#myUL {
+    width: 100%;
+    margin: auto;
+    padding: 5px; /* İçerik için padding */
+}
+
+/* Liste elemanlarına stil ekle */
+#myUL li {
+    background-color: white;
+    display: block;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid white;
+    border-radius: 20px;
+    text-align: start;
+}
+
+h5 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold; /* Başlıkları kalın yapma */
+    font-size: 1.2em; /* Başlık boyutunu büyütme */
+}
+
+p {
+    font-size: 1em;
+    color: #000000;
+}
+
+.row {
+    text-align: center;
+}

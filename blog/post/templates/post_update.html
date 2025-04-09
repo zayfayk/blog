@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Edit Post{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<link href="{% static 'css/add_post.css' %}" rel="stylesheet">
+<div class="container">
+    <h1>Edit Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% else %}
+    <h1>Welcome to the Blog</h1>
+    <p>Sign up to see the latest posts</p>
+    <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+    <br><br>
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+    <br><br>
+    <a href="{% url 'contant' %}" class="btn btn-primary">Contact Us</a>
+{% endif %}
+{% endblock content %}

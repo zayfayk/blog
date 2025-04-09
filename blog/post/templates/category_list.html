@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Category List{% endblock %}
+{% block content %}
+<div class="blog-container">
+  {% if user.is_authenticated %}
+    <link rel="stylesheet" href="{% static 'css/category_list.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <div class="blog-post">
+      <div class="category-header">
+        <i class="fas fa-folder-open category-icon"></i>
+        <h2 class="category-title">{{ cats }}</h2>
+      </div>
+      
+      <div class="category-description">
+        <p>Showing all posts in this category. Discover new ideas and insights!</p>
+      </div>
+      
+      {% if category_posts.exists %}
+        <div class="post-count">
+          <span>{{ category_posts.count }} post{% if category_posts.count != 1 %}s{% endif %} found</span>
+        </div>
+        
+        <div class="post-list">
+          {% for post in category_posts %}
+          <div class="post-card">
+            <div class="card-content">
+              <h2 class="idea-title">{{ post.title }}</h2>
+              <p class="idea-body">{{ post.Body|truncatewords:20 }}</p>
+            </div>
+            <div class="idea-footer">
+              <span class="idea-meta">
+                <i class="far fa-calendar-alt"></i> {{ post.date|date:"d M Y" }}
+                &nbsp; • &nbsp;
+                <i class="far fa-user"></i> {{ post.author }}
+              </span>
+              <div class="actions">
+                <a href="{% url 'post_detail' post.pk %}" class="btn detail"><i class="fas fa-eye"></i> Detaylar</a>
+                <a href="{% url 'post_update' post.pk %}" class="btn edit"><i class="fas fa-edit"></i> Düzenle</a>
+                <a href="{% url 'post_delete' post.pk %}" class="btn delete"><i class="fas fa-trash"></i> Sil</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="no-posts">
+          <i class="far fa-folder-open"></i>
+          <p>No posts found in this category yet.</p>
+          <a href="{% url 'add_post' %}" class="btn create-post">Create the first post</a>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="welcome-container">
+      <div class="welcome-icon">
+        <i class="fas fa-lightbulb"></i>
+      </div>
+      <h1>Welcome to Idea Stream</h1>
+      <p>Join our community to share and discover investment insights, market analysis, and trading strategies!</p>
+      <div class="welcome-buttons">
+        <a href="{% url 'signup' %}" class="btn btn-primary"><i class="fas fa-user-plus"></i> Sign Up</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
+      </div>
+      <div class="contact-link">
+        <a href="{% url 'contant' %}" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}

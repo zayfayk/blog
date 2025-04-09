@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add post{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+
+<link href="{% static 'css/add_post.css' %}" rel="stylesheet">
+<br><br>
+<div class="container">
+    <div class="form-group">
+        <form method="POST" class="styled-form" enctype="multipart/form-data">
+            <h1>Add post</h1>
+            <br>
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="{{ form.title.id_for_label }}" class="col-sm-2 col-form-label">Title</label>
+                <div class="col-sm-10">
+                    {{ form.title }}
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="{{ form.Body.id_for_label }}" class="col-sm-2 col-form-label">Body</label>
+                <div class="col-sm-10">
+                    {{ form.Body }}
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="{{ form.author.id_for_label }}" class="col-sm-2 col-form-label">Author</label>
+                <div class="col-sm-10">
+                    {{ form.author }}
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="{{ form.category.id_for_label }}" class="col-sm-2 col-form-label">category</label>
+                <div class="col-sm-10">
+                    {{ form.category }}
+                </div>
+            </div>
+        
+            <br>
+            <button type="submit" class="submit-button" id="submit-button">
+                Submit
+            </button>
+                
+        </form>      
+    </div>
+</div>
+{% else %}
+    <h1>Welcome to the Blog</h1>
+    <p>Sign up to see the latest posts</p>
+    <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a><br><br>
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a> <br><br>
+    <a href="{% url 'contant' %}" class="btn btn-primary">Contact Us</a>
+{% endif %}
+{% endblock content %}

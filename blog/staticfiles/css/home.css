@@ -1,0 +1,335 @@
+/* Temel Stiller */
+body {
+    margin: 0;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Ana kapsayıcı - Merkezi konumlandırma için düzenlendi */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px 60px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto; /* Merkezi hizalama */
+}
+
+/* Kartların bulunduğu alan - Daha iyi ortalama */
+.card-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; /* Kartları yatayda ortala */
+    align-items: stretch; /* Kartları dikeyde esnek hizala */
+    margin: 0 auto; /* Konteyneri ortala */
+    transition: all 0.3s ease;
+}
+
+/* Üst başlık alanı - İyileştirilmiş ortalama */
+.top-header {
+    text-align: center;
+    padding: 60px 20px 20px;
+    max-width: 1000px;
+    margin: 0 auto; /* Merkezi hizalama */
+    width: 100%; /* Tam genişlik */
+}
+
+.title {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block; /* İçerik kadar genişlikte */
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%); /* Tam ortala */
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #2ecc71, #3498db);
+    border-radius: 2px;
+}
+
+/* Subtitle eklendi */
+.subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 25px; /* Ortalanmış subtitle */
+    line-height: 1.5;
+}
+
+/* Fikir ekleme butonu - Daha iyi ortalanmış */
+.add-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    text-align: center; /* Metin ortalama */
+}
+
+.add-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+    background: linear-gradient(45deg, #27ae60, #2ecc71);
+}
+
+/* Fikir kartı - Eşit boyutta ve ortalanmış */
+.idea-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    width: 80%;  /* Daha geniş kartlar */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);  /* Daha belirgin gölge efekti */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;  /* Yumuşak geçiş */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;  /* Merkezi hizalama ve aralarına boşluk */
+    max-width: 90%;  /* Maksimum genişlik %90 */
+    cursor: pointer;
+}
+
+.idea-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #3498db, #2ecc71);
+    border-radius: 3px 0 0 3px;
+}
+
+.idea-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Kart içeriği - Daha iyi hizalama */
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.idea-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    text-align: left; /* Sol hizalama */
+}
+
+.idea-body {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex: 1; /* İçeriğin esnek büyümesi */
+}
+
+.idea-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #888;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    flex-wrap: wrap; /* Küçük ekranlarda sarılmasına izin ver */
+    gap: 10px;
+}
+
+.idea-meta {
+    display: flex;
+    align-items: center;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Küçük ekranlarda sarma */
+    justify-content: flex-end; /* Sağa hizalama */
+}
+
+.actions .btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex; /* İkon hizalama için */
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* İkon ve metin arası boşluk */
+}
+
+.btn.detail {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn.detail:hover {
+    background-color: #2980b9;
+}
+
+.btn.edit {
+    background-color: #f1c40f;
+    color: #ffffff;
+}
+
+.btn.edit:hover {
+    background-color: #e0b50b;
+}
+
+.btn.delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn.delete:hover {
+    background-color: #c0392b;
+}
+
+/* Boş durum mesajı - Tam ortada */
+.empty-message {
+    padding: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 200px;
+}
+
+.empty-message i {
+    font-size: 4rem;
+    color: #bdc3c7;
+    margin-bottom: 5px;
+}
+
+.empty-message .add-btn {
+    margin-top: 20px;
+}
+
+/* Animasyonlar */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+    display: inline-block;
+}
+
+/* Sayfa düzeni ve ortalama için */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Mobil responsive ayarlamalar - İyileştirilmiş */
+@media (max-width: 992px) {
+    .wrapper {
+        padding: 20px 15px 40px;
+    }
+    
+    .card-container {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    
+    .card-container {
+        padding: 25px 15px;
+        gap: 20px;
+    }
+    
+    .idea-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .actions {
+        flex-wrap: wrap;
+        gap: 8px 5px;
+        justify-content: center; /* Mobilde ortalama */
+        width: 100%; /* Tam genişlik */
+    }
+    
+    .idea-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .idea-meta {
+        width: 100%;
+        justify-content: center; /* Mobilde ortalama */
+    }
+    
+    .actions .btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Ekstra küçük ekranlar için */
+@media (max-width: 576px) {
+    .top-header {
+        padding: 40px 10px 20px;
+    }
+    
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .add-btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}

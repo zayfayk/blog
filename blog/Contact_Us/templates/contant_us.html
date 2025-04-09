@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block content %}
+{% load static %}
+<link href="{% static 'css/forms.css' %}" rel="stylesheet">
+
+<style>
+  
+</style>
+
+<main class="contact-us-page">
+    <div class="container">
+        <div class="form-box">
+            <h1 class="title">Fill out the form to get in touch with us!</h1>
+            
+            <!-- Form -->
+            <form method="POST" class="styled-form" id="contact-form">
+                {% csrf_token %}
+                
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+                
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Enter your country" required>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button" id="submit-button">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock content %}

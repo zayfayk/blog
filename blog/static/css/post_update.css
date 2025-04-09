@@ -1,0 +1,18 @@
+.submit-btn {
+    background: linear-gradient(90deg, #000000, #000000);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 6px 10px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+} 
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #020202, #000000);
+    background-color: #555555; /* Hoverda arka plan rengini değiştirme */
+    transform: scale(1.05); /* Büyütme efekti */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Gölgeleme efekti */
+}

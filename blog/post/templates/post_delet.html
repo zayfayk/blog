@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Post Delete{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<link href="{% static 'css/Delete_post.css' %}" rel="stylesheet">
+<br><br>
+
+<!-- Delete post sayfası için container sınıfı -->
+<div class="container delete-post-container">
+    <div class="form-group">
+        <form method="POST" class="styled-form" enctype="multipart/form-data">
+            <h1 class="form-title">Delete Post</h1>
+            <br><br>
+            
+            <div class="form-group row">
+                <strong class="confirmation-text">Are you sure you want to delete the following post?</strong>
+                <h3 class="post-title">Title: {{ post.title }}</h3>
+                {% csrf_token %}
+            </div>
+            <br><br>
+            <div class="form-group row">
+                <button type="submit" class="submit-button" id="submit-button">
+                    Delete
+                </button>
+                <br><br>
+                <a href="{% url 'Home' %}" class="cancel-button">Cancel</a>
+            </div>
+        </form>      
+    </div>
+</div>
+
+{% else %}
+    <h1>Welcome to the Blog</h1>
+    <p>Sign up to see the latest posts</p>
+    <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a><br><br>
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a><br><br>
+    <a href="{% url 'contant' %}" class="btn btn-primary">Contact Us</a>
+{% endif %}
+{% endblock content %}

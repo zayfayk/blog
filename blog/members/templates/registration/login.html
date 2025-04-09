@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+
+<link href="{% static 'css/registration.css' %}" rel="stylesheet">
+<br><br>
+<div class="container">
+    <div class="form-group">
+        <form method="POST" class="styled-form" enctype="multipart/form-data">
+            <h1>Login</h1>
+            <br>
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" required>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+            <br>
+            <a href="{% url 'signup' %}">Don't have an account? Sign up</a>
+            <br>
+            <br>
+            <button type="submit" class="submit-button" id="submit-button">
+                Login
+            </button>
+                
+        </form>      
+    </div>
+</div>
+{% endblock content %}

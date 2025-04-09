@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/media/image/logo.png" type="image/png">
+    <title>
+        {% block title %}
+            Home
+        {% endblock %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Load static files -->
+    {% load static %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+</head>
+<body class="Body">
+    
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container">
+            <!-- Logo on the left -->
+            <div class="d-flex align-items-center me-3">
+                <img src="/media/image/logo.png" class="rounded" alt="logo" width="40">
+            </div>
+            
+            <!-- Menu on the right -->
+            <div class="d-flex ms-auto align-items-center">
+               {% if user.is_authenticated %}
+                    {% if request.path != '/' %}
+                        <div class="dropdown mx-2">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-folder-open"></i> Categories
+                            </button>
+                            {% if show_dropdown %}
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="categoriesDropdown">
+                                    {% for item in cat_menu %}
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'category' item.name|slugify %}">
+                                                {{ item.name }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_category' %}"><i class="fas fa-plus"></i> Add Category</a></li>
+                                </ul>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    <a href="{% url 'base' %}" class="btn btn-light text-dark mx-2">Home</a>
+                    <a href="{% url 'Home' %}" class="btn btn-light text-dark mx-2">Blog</a> 
+                
+                    <!-- Categories Dropdown -->
+                    
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-light text-dark mx-2">Log out</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-light text-dark mx-2">Login</a>
+                    <a href="{% url 'signup' %}" class="btn btn-light text-dark mx-2">Sign Up</a>
+                    <a href="{% url 'contant' %}" class="btn btn-light text-dark mx-2">Contact Us</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+ 
+    
+    {% block content %}
+    <main>
+
+    </main>
+    <br><br><br>
+    
+    <!-- Container for cards aligned side by side -->
+    <div class="container d-flex justify-content-between">
+        <!-- Telegram Card -->
+        <div class="card" style="width: 18rem;">
+            <img src="https://img.tamindir.com/resize/1200x675/2023/12/476726/telegram-benzer-kanallar-yeni-hikaye-secenekleri.jpg" class="card-img-top equal-height" alt="Telegram Channel">
+            <div class="card-body">
+                <h5 class="card-title">Looking for trading tips?</h5>
+                <p class="card-text">If you're into gold or forex trading, you might want to check this channel. Join us for some insightful market discussions and tips.</p>
+                <a href="https://t.me/goldforexdj2" class="btn btn-primary">Join the channel</a>
+            </div>
+        </div>
+
+        <!-- TikTok Card -->
+        <div class="card" style="width: 18rem;">
+            <img src="https://news.sophos.com/wp-content/uploads/2021/03/Copy-of-Supply-Chain-Sophos-News-banners-2.png" class="card-img-top equal-height" alt="TikTok Channel">
+            <div class="card-body">
+                <h5 class="card-title">Curious about TikTok content?</h5>
+                <p class="card-text">If you're looking for engaging content and insights, check out my TikTok channel. Join me for tips, trends, and more!</p>
+                <a href="https://www.tiktok.com/@abdulrahmanalshukri1/" class="btn btn-primary">Follow now</a>
+            </div>
+        </div>
+
+        <!-- Instagram Card -->
+        <div class="card" style="width: 18rem;">
+            <img src="https://cdn-p.smehost.net/sites/2f04351fbce84b459f34a00d1cd0ddd8/wp-content/uploads/2021/03/InstagramLiveRooms_Banner.png" class="card-img-top equal-height" alt="Instagram Channel">
+            <div class="card-body">
+                <h5 class="card-title">Curious about Instagram content?</h5>
+                <p class="card-text">If you're looking for engaging content and insights, check out my Instagram channel. Join me for tips, trends, and more!</p>
+                <a href="https://www.instagram.com/alshikree?igsh=MXN4M29panZic3BhaQ==" class="btn btn-primary">Follow now</a>
+            </div>
+        </div>
+
+        <!-- YouTube Card -->
+        <div class="card" style="width: 18rem;">
+            <img src="https://preview.redd.it/3d-youtube-logo-full-video-on-my-channel-v0-ituve6xk0apa1.png?width=1080&crop=smart&auto=webp&s=71fda95ebc2f247e9fcc60e05f07f2a0a427f4c0" class="card-img-top equal-height" alt="YouTube Channel">
+            <div class="card-body">
+                <h5 class="card-title">Interested in YouTube content?</h5>
+                <p class="card-text">If you want to explore more about videos, tutorials, and more, check out my YouTube channel for engaging content!</p>
+                <a href="https://www.youtube.com/@alshikree1/featured" class="btn btn-primary">Subscribe now</a>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <footer class="text-center py-4 bg-dark text-white">
+        <p>&copy; 2025 All rights reserved.</p>
+    </footer>
+    {% endblock content %}
+</body>
+</html>

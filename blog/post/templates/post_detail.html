@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="blog-container">
+  {% if user.is_authenticated %}
+    <div class="blog-post">
+      <h1 class="blog-title">{{ post.title }}</h1>
+      
+      <div class="blog-content">
+        <p>{{ post.Body |safe  }}</p>
+      </div>
+      
+      <div class="blog-meta">
+        <p class="blog-author">Author: {{ post.author }}</p>
+        &nbsp; • &nbsp; 
+        <p class="blog-category">Category: {{ post.category }}</p>
+        &nbsp; • &nbsp; 
+        <p class="blog-date">Date: {{ post.date }}</p>
+      </div>
+    </div>
+  {% else %}
+    <div class="welcome-container">
+      <h1>Welcome to the Blog</h1>
+      <p>Sign up to see the latest posts</p>
+      <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a><br><br>
+      <a href="{% url 'login' %}" class="btn btn-primary">Login</a><br><br>
+      <a href="{% url 'contant' %}" class="btn btn-primary">Contact Us</a>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .blog-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  .blog-post {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+  }
+  
+  .blog-title {
+    color: #333;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+  }
+  
+  .blog-content {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+  }
+  
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #777;
+    font-size: 16px;
+  }
+  
+  .blog-author {
+    font-weight: 600;
+  }
+  
+  .blog-date {
+    font-style: italic;
+  }
+  
+  .welcome-container {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 50px 30px;
+  }
+  
+  .welcome-container h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-container p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .btn-primary {
+    background-color: #4a89dc;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #3b7ddb;
+  }
+</style>
+{% endblock content %}

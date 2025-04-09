@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+/* Genel yapı */
+/* Delete post sayfası için container genişliğini küçültme */
+.delete-post-container {
+    max-width: 500px; /* Burada genişliği küçültüyoruz */
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Diğer stiller aynen kalabilir */
+.form-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Silme onay metni */
+.confirmation-text {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Post başlığını stilize etme */
+.post-title {
+    font-size: 20px;
+    color: #000000; /* Kırmızı renk post başlığı */
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+/* Buton stili */
+.submit-button {
+    background-color: #e74c3c; /* Kırmızı arka plan */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+/* Silme butonuna hover efekti */
+.submit-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* İptal butonu - a etiketi */
+.cancel-button {
+    display: inline-block; /* Buton gibi görünmesi için inline-block yapıyoruz */
+    color: #3498db; /* Mavi renk */
+    background-color: #ecf0f1; /* Açık gri arka plan */
+    border: 1px solid #3498db; /* Mavi kenarlık */
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none; /* Alt çizgi kaldır */
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+/* Cancel butonuna hover efekti */
+.cancel-button:hover {
+    background-color: #3498db; /* Hoverda mavi */
+    color: white; /* Yazı beyaz */
+    border: 1px solid #3498db; /* Kenarlık aynı kalacak */
+    transform: scale(1.05); /* Buton büyüyecek */
+}
+
+/* Cihazlar için responsive düzenleme */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .form-title {
+        font-size: 24px;
+    }
+    .submit-button, .cancel-button {
+        padding: 10px 20px;
+    }
+    .cancel-button {
+        font-size: 14px;
+    }
+}

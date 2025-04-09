@@ -1,0 +1,102 @@
+  /* Google Font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+  .contact-us-page * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+  }
+
+  /* Background */
+  .contact-us-page {
+      background: #1a1a1a; /* Koyu arka plan */
+      min-height: calc(100vh - 80px); /* Navbar için boşluk bırakıyoruz */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      width: 100%;
+  }
+
+  /* Form Container */
+  .contact-us-page .container {
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+
+  /* Form Box */
+  .contact-us-page .form-box {
+      background: #2c2c2c; /* Görseldeki gibi koyu gri */
+      border-radius: 8px;
+      padding: 30px;
+      width: 100%;
+      max-width: 450px; /* Form genişliğini sınırlayalım */
+      margin: 0 auto;
+  }
+
+  /* Title */
+  .contact-us-page .title {
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+  }
+
+  /* Form Styling */
+  .contact-us-page .styled-form {
+      width: 100%;
+  }
+
+  .contact-us-page .styled-form label {
+      display: block;
+      color: #fff;
+      margin-bottom: 8px;
+      font-weight: 400;
+      font-size: 16px;
+  }
+
+  .contact-us-page .styled-form input {
+      width: 100%;
+      background: #f5f5f5;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 6px;
+      color: #333;
+      font-size: 15px;
+      margin-bottom: 20px;
+  }
+
+  .contact-us-page .styled-form input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+  }
+
+  .contact-us-page .submit-button {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  }
+
+  .contact-us-page .submit-button:hover {
+      background: #333;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+      .contact-us-page {
+          padding: 15px;
+      }
+      .contact-us-page .form-box {
+          padding: 20px;
+      }
+  }
